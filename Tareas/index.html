@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas de la casa</title>
+</head>
+<body>
+    
+
+    <script>
+        function familia(nombreFamilia, miembros){
+            this.nombreFamilia = nombreFamilia;
+            this.miembros = miembros;
+        }
+
+        function tareas(nombreTarea){
+            this.nombreTarea = nombreTarea;
+        }
+
+      
+        var Sastre = new familia("Sastre",["Padre", "Madre", "Hijo", "Hija"])
+        var Torrens =  new familia("Torrens",["Padre", "Madre", "Hijo", "Hija"])
+        var Moll = new familia("Moll",["Padre", "Madre", "Hijo", "Hija Grande", "Hija Pequeña"])
+            
+        
+
+
+        var lavadora = new tareas("Poner Lavadora");
+        var cocina = new tareas("Limpiar Cocina");
+        var comedor = new tareas("Limpiar Comedor");
+        var planchar = new tareas("Planchar");
+        var baño = new tareas("Limpiar Baño");
+       
+        const tareasSastre = [lavadora, cocina, baño]
+        const tareasMoll = [lavadora, cocina, comedor, planchar, baño]
+        const tareasTorrens = [planchar, baño]
+        
+        function asignarTareas(Familia, TareasFamilia, Semanas){
+    for (var semana = 1; semana <= Semanas; semana++) {
+        var accion = "";
+        for (var i = 0; i < TareasFamilia.length; i++) {
+            var t = TareasFamilia[i].nombreTarea;
+            var m = Familia.miembros[(semana + i) % Familia.miembros.length];
+            accion += "Toca "+ t + " a " + m + ", ";
+        }
+        console.log("Semana " + semana + ": " + accion);
+    }
+}
+    console.log("PLANIFICACION FAMILIA SASTRE")
+    asignarTareas(Sastre, tareasSastre, 52);
+    console.log("PLANIFICACION FAMILIA TORRENS")
+    asignarTareas(Torrens,tareasTorrens,4)
+    console.log("PLANIFICACION FAMILIA MOLL")
+    asignarTareas(Moll,tareasMoll,12)
+    </script>
+</body>
+</html>
