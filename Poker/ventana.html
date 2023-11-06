@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mi Juego</title>
+  </head>
+  <body>
+    <button id="play" onclick="abrirventana()">Jugar</button>
+    <button onclick="cerrarVentana()">Cerrar ventana</button>
+    <button onclick="cerrarJuego()">Cerrar juego</button>
+
+    <script>
+      var ventanaJuego;
+
+      function abrirventana() {
+        ventanaJuego = window.open(
+          "http://127.0.0.1:5500/Poker/index.html",
+          "Poker",
+          "width=800,height=300"
+        );
+      }
+
+      function cerrarVentana() {
+        if (ventanaJuego) {
+          ventanaJuego.close();
+        }
+      }
+
+      function cerrarJuego() {
+        //cerrarVentana()
+        window.close();
+      }
+    </script>
+  </body>
+</html>

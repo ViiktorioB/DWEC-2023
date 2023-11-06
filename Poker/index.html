@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body onload="play()">
+    <style>
+      img {
+        width: 150px;
+      }
+    </style>
+    <div id="juego">
+      <button id="play" onclick="play()">Refrescar</button>
+
+      <div id="texto"></div>
+    </div>
+    <script>
+      let juego = document.querySelector("#juego");
+      let cartas = [];
+
+      cartas[0] = ["/Poker/cards/2_of_spades.png", "2"];
+      cartas[1] = ["/Poker/cards/2_of_diamonds.png", "2"];
+      cartas[2] = ["/Poker/cards/2_of_hearts.png", "2"];
+      cartas[3] = ["/Poker/cards/2_of_clubs.png", "2"];
+      cartas[4] = ["/Poker/cards/3_of_spades.png", "3"];
+      cartas[5] = ["/Poker/cards/3_of_diamonds.png", "3"];
+      cartas[6] = ["/Poker/cards/3_of_hearts.png", "3"];
+      cartas[7] = ["/Poker/cards/4_of_clubs.png", "3"];
+      cartas[8] = ["/Poker/cards/4_of_spades.png", "4"];
+      cartas[9] = ["/Poker/cards/4_of_diamonds.png", "4"];
+      cartas[10] = ["/Poker/cards/4_of_hearts.png", "4"];
+      cartas[11] = ["/Poker/cards/4_of_clubs.png", "4"];
+      cartas[12] = ["/Poker/cards/5_of_spades.png", "5"];
+      cartas[13] = ["/Poker/cards/5_of_diamonds.png", "5"];
+      cartas[14] = ["/Poker/cards/5_of_hearts.png", "5"];
+      cartas[15] = ["/Poker/cards/5_of_clubs.png", "5"];
+      cartas[16] = ["/Poker/cards/6_of_spades.png", "6"];
+      cartas[17] = ["/Poker/cards/6_of_diamonds.png", "6"];
+      cartas[18] = ["/Poker/cards/6_of_hearts.png", "6"];
+      cartas[19] = ["/Poker/cards/6_of_clubs.png", "6"];
+      cartas[20] = ["/Poker/cards/7_of_spades.png", "7"];
+      cartas[21] = ["/Poker/cards/7_of_diamonds.png", "7"];
+      cartas[22] = ["/Poker/cards/7_of_hearts.png", "7"];
+      cartas[23] = ["/Poker/cards/7_of_clubs.png", "7"];
+      cartas[24] = ["/Poker/cards/8_of_spades.png", "8"];
+      cartas[25] = ["/Poker/cards/8_of_diamonds.png", "8"];
+      cartas[26] = ["/Poker/cards/8_of_hearts.png", "8"];
+      cartas[27] = ["/Poker/cards/8_of_clubs.png", "8"];
+      cartas[28] = ["/Poker/cards/9_of_spades.png", "9"];
+      cartas[29] = ["/Poker/cards/9_of_diamonds.png", "9"];
+      cartas[30] = ["/Poker/cards/9_of_hearts.png", "9"];
+      cartas[31] = ["/Poker/cards/9_of_clubs.png", "9"];
+      cartas[32] = ["/Poker/cards/10_of_spades.png", "10"];
+      cartas[33] = ["/Poker/cards/10_of_diamonds.png", "10"];
+      cartas[34] = ["/Poker/cards/10_of_hearts.png", "10"];
+      cartas[35] = ["/Poker/cards/10_of_clubs.png", "10"];
+      cartas[36] = ["/Poker/cards/ace_of_spades.png", "Ace"];
+      cartas[37] = ["/Poker/cards/ace_of_diamonds.png", "Ace"];
+      cartas[38] = ["/Poker/cards/ace_of_hearts.png", "Ace"];
+      cartas[39] = ["/Poker/cards/ace_of_clubs.png", "Ace"];
+      cartas[40] = ["/Poker/cards/jack_of_spades2.png", "Jack"];
+      cartas[41] = ["/Poker/cards/jack_of_diamonds2.png", "Jack"];
+      cartas[42] = ["/Poker/cards/jack_of_hearts2.png", "Jack"];
+      cartas[43] = ["/Poker/cards/jack_of_clubs2.png", "Jack"];
+      cartas[44] = ["/Poker/cards/queen_of_spades2.png", "Queen"];
+      cartas[45] = ["/Poker/cards/queen_of_diamonds2.png", "Queen"];
+      cartas[46] = ["/Poker/cards/queen_of_hearts2.png", "Queen"];
+      cartas[47] = ["/Poker/cards/queen_of_clubs2.png", "Queen"];
+      cartas[48] = ["/Poker/cards/king_of_spades2.png", "King"];
+      cartas[49] = ["/Poker/cards/king_of_diamonds2.png", "King"];
+      cartas[50] = ["/Poker/cards/king_of_hearts2.png", "King"];
+      cartas[51] = ["/Poker/cards/king_of_clubs2.png", "King"];
+
+      function play() {
+        if (juego) {
+          nuevoJuego();
+          for (let i = 0; i < 5; i++) {
+            if (cartas.length === 0) {
+              // Manejar el caso en el que no quedan más cartas disponibles
+              alert("No hay más cartas disponibles. Gracias por jugar");
+              cerrarVentana();
+              break;
+            }
+
+            const randomIndex = Math.floor(Math.random() * cartas.length);
+            const carta = cartas[randomIndex];
+
+            let crearimg = document.createElement("img");
+            crearimg.setAttribute("src", carta[0]);
+            crearimg.setAttribute("valor", carta[1]);
+            juego.appendChild(crearimg);
+
+            // Elimina la carta de la lista cartas y agrégala a cartasJugadas
+            cartas.splice(randomIndex, 1);
+          }
+          verificarParejas();
+        }
+      }
+
+      function nuevoJuego() {
+        var imagenes = document.querySelectorAll("img");
+
+        for (var i = 0; i < imagenes.length; i++) {
+          var imagen = imagenes[i];
+          imagen.remove();
+        }
+        var texto = document.querySelectorAll("p");
+        for (let i = 0; i < texto.length; i++) {
+          texto[i].remove();
+        }
+      }
+
+      function verificarParejas() {
+        var cartas = document.querySelectorAll("img");
+        var textoContainer = document.querySelector("#texto");
+
+        for (var i = 0; i < cartas.length - 1; i++) {
+          for (var j = i + 1; j < cartas.length; j++) {
+            var valor1 = cartas[i].getAttribute("valor");
+            var valor2 = cartas[j].getAttribute("valor");
+
+            if (valor1 === valor2) {
+              var texto =
+                "Cartas " +
+                (i + 1) +
+                "-" +
+                (j + 1) +
+                " son parejas (" +
+                valor1 +
+                ")." +
+                "Has ganadoo!!";
+              var parrafo = document.createElement("p");
+              parrafo.innerHTML = texto;
+              textoContainer.appendChild(parrafo);
+            }
+          }
+        }
+      }
+
+      function verificarTrios() {
+        var cartas = document.querySelectorAll("img");
+        var textoContainer = document.querySelector("#texto");
+      }
+
+      /* function refrescar(){
+            nuevoJuego();
+            location.reload();
+        }*/
+      function cerrarVentana() {
+        window.close();
+      }
+    </script>
+  </body>
+</html>
