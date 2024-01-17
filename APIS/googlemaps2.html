@@ -1,0 +1,36 @@
+<html>
+
+<head>
+  <title>Simple Map</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDI3Wnk0as89bj1u3vPxkis9QTPMUfHPWI&callback=initMap">
+</script>
+  <style>
+ 
+    #map {
+      height: 90%;
+    }
+    
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="map">
+      <gmp-advanced-marker id="marker" title="My location">
+      </gmp-advanced-marker>
+  </div>
+  <script src="index.js"></script>
+
+</body>
+
+</html>
