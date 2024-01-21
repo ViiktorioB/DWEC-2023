@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #6b6b69;
+  color: white;
+}
+
+.info {
+  position: relative;
+  font-family: Arial;
+  margin: 10px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+#title {
+  font-size: 20px;
+}
+
+#rest2 {
+  font-size: 13px;
+}
+
+#text div {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border: 1px dashed gray;
+  display: inline-block;
+  margin: 0;
+}
+
+#text {
+  width: 618px;
+  height: 618px;
+  background: black;
+  border: 5px solid black;
+  margin: auto;
+}
+
+#images {
+  width: 100%;
+}
+
+img {
+  height: 200px;
+  width: 200px;
+}
+
+#drag4,
+#drag5,
+#drag6,
+#drag7,
+#drag8,
+#drag9,
+#drag10,
+#drag11,
+#drag12 {
+  height: 200px;
+  width: 200px;
+
+  display: inline-block;
+}
+
+#drag4 {
+  background: linear-gradient(to bottom right, green, green, yellow);
+}
+
+#drag5 {
+  background: linear-gradient(to right, blue, green);
+}
+
+#drag6 {
+  background: linear-gradient(blue, green);
+}
+
+#drag7 {
+  background: linear-gradient(to bottom right, blue, blue, green);
+}
+
+#drag8 {
+  background: yellow;
+}
+
+#drag9 {
+  background: linear-gradient(green, yellow);
+}
+
+#drag10 {
+  background: linear-gradient(to right, green, yellow);
+}
+
+#drag11 {
+  background: linear-gradient(blue, green);
+}
+
+#drag12 {
+  background: linear-gradient(to right, blue, green);
+}
